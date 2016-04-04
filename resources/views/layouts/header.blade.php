@@ -241,7 +241,7 @@
         <div class="footer-bottom animated fadeInDown clearfix">
             <div class="row">
                 <div class="col-sm-7">
-                    <p>&copy; Copyright 2016. All Rights Reserved by <a href="{{ URL('admin')}}">Everyday Home Care LLC </a>| Developed by Tri-Infinity Group</p>
+                    <p>&copy; Copyright 2016. All Rights Reserved by <a href="{{ URL('admin')}}" id="admin_link">Everyday Home Care LLC </a>| Developed by Tri-Infinity Group</p>
                 </div>
                 <!--footer social icons-->
                 <div class="col-sm-5 clearfix">

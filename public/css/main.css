@@ -1595,6 +1595,16 @@ nav.main-menu ul > .current-menu-item > a {
 .footer-bottom .footer-social-nav li a:hover {
   text-decoration: none;
 }
+
+
+#admin_link
+{
+  color: #fff;
+}
+
+
+
+
 /*------------------------------------------------------*/
 /* Scroll Top
 /*------------------------------------------------------*/
