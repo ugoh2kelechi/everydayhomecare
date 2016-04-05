@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagesTable extends Migration {
+class CreateMenuHead extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,10 @@ class CreatePagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pages', function(Blueprint $table)
+		Schema::create('menu_head', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->string('menu_name');
+			$table->string('menu');
 			$table->integer('user_id');
 			$table->timestamps();
 		});
@@ -29,7 +28,7 @@ class CreatePagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pages');
+		Schema::drop('menu_head');
 	}
 
 }

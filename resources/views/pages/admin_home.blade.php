@@ -9,6 +9,8 @@
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+                    <span class="">
+                            </span><strong> Welcome: {{ $user->name }} </strong></a><hr>
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
                             </span>Page Content</a>
@@ -134,17 +136,41 @@
 
 
         <div class="col-sm-9 col-md-9" id="accordion">
+        <!-- The creating a new menu form -->
             <div class="well collapse" id="PageName">
 
-                <h1> Accordion Menu to add page name.</h1>
+                <h1> Provide a menu for website. </h1>
 
                 {!! Form::open(array('url'=>'Pagename', 'method'=>'POST','class'=>''))  !!}
+                {!! Form::label('menu','Select Menu') !!}
+
+                {!! Form::select('menu_head',array('SERVICES'=>'Services','CAREGIVERS'=>'Caregivers','NEWS/VIDEOS'=>'News/Videos','RESOURCES'=>'Resources'), 'SERVICES', array('class'=>'form-control')) !!}
+
 				{!! Form::label('pgname','Page Name') !!}
-				{!! Form::text('name','',array('class'=>'form-control','id'=>'addname')) !!}
-
+				{!! Form::text('name',old('name'),array('class'=>'form-control','id'=>'addname')) !!}
 				{!! Form::Submit('Submit',array('class'=>'btn btn-primary')) !!}
-
 				{!! Form::close() !!}
+
+                <br><hr><br>
+
+            </div>
+
+
+            <!-- The creating a new menu form -->
+
+             <div class="well collapse" id="PageName">
+
+                <h1> Provide a menu for website. </h1>
+
+                {!! Form::open(array('url'=>'Pagename', 'method'=>'POST','class'=>''))  !!}
+                {!! Form::label('menu','Select Menu') !!}
+
+                {!! Form::select('menu_head',array('SERVICES'=>'Services','CAREGIVERS'=>'Caregivers','NEWS/VIDEOS'=>'News/Videos','RESOURCES'=>'Resources'), 'SERVICES', array('class'=>'form-control')) !!}
+
+                {!! Form::label('pgname','Page Name') !!}
+                {!! Form::text('name',old('name'),array('class'=>'form-control','id'=>'addname')) !!}
+                {!! Form::Submit('Submit',array('class'=>'btn btn-primary')) !!}
+                {!! Form::close() !!}
 
             </div>
                 

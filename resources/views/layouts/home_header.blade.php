@@ -91,7 +91,7 @@
                     <a href="{{ URL('/') }}">HOME</a>
                 </li>
                 <li>
-                    <a href="#">OUR SERVICES</a>
+                    <a href="#">SERVICES</a>
                     <ul>
                         <li><a href="#">Skilled Nursing</a></li>
                         <li><a href="#">Alzheimer's & Dementia Care</a></li>
@@ -247,7 +247,7 @@
     </div>
 </div>
 <!--appointment form end-->
-
+<div id="spacer"> </div>
 
 @yield('content')
 

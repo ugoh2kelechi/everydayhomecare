@@ -99,9 +99,6 @@
                         <li><a href="#">Home Care Aides</a> </li>
                         <li><a href="#">Parkinson's Care</a> </li>
                         <li><a href="#">Personal Care</a> </li>
-                        <li><a href="#">Waivers</a> </li>
-                        <li><a href="#">Surgery Assistance & Sitter Services</a> </li>
-                        <li><a href="#">Veteran Services</a> </li>
                     </ul>
                 </li>
                 <li>

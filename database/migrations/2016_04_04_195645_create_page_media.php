@@ -17,7 +17,7 @@ class CreatePageMedia extends Migration {
 			$table->increments('pm_id');
 			$table->string('media');
 			$table->string('media_type');
-			$table->string('user_id');
+			$table->integer('user_id');
 			$table->integer('content_id')->unsigned();
 			$table->foreign('content_id')->references('pc_id')->on('page_content');
 			$table->timestamps();

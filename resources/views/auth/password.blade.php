@@ -1,6 +1,7 @@
-@extends('app')
+@extends('layouts.header')
 
 @section('content')
+<?php $title = "Password || EverydayHomeCare"; ?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
