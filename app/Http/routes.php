@@ -18,7 +18,9 @@ Route::get('home', 'mainController@index');
 Route::get('admin', 'mainController@admin');
 
 Route::post('Pagename', 'pagesController@store');
-Route::post('Pagecontent', 'pagesController@store');
+Route::post('Pagecontent', 'contentController@store');
+
+Route::post('pageMedia','mediaController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

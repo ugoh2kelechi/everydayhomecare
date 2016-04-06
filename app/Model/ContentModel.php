@@ -13,7 +13,7 @@ class ContentModel extends Model {
 	protected $hidden = ['pc_id','updated_at','created_at'];
 
 	public function paged(){
-		return $this->belongsTo('PageModel');
+		return $this->belongsTo('App\Model\PageModel');
 	}
 
 }

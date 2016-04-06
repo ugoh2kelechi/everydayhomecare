@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-picture text-info"></span><a href="#">Add Picture to Page</a>
+                                        <span class="glyphicon glyphicon-picture text-info"></span><a data-toggle="collapse" href="#PageMedia">Add Picture to Page</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -211,6 +211,31 @@
                     {!! Form::label('content','Page content') !!}
                     {!! Form::textarea('pg_content',Input::old('pg_content'),array('class'=>'form-control','id'=>'addname')) !!}
 
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+
+             <div class="well collapse" id="PageMedia">
+                
+                    <h1> Provide a page content. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>''))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$pages, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+                    <br/>
+                    {!! Form::label('media_name','Page title') !!}
+                    {!! Form::text('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+                    <br/>
                     {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
                     {!! Form::close() !!}
 

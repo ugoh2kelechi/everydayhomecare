@@ -13,7 +13,7 @@ class PageModel extends Model {
 	protected $hidden = ['id','user_id'];
 
 	public function contented(){
-		return $this->hasMany('ContentModel');
+		return $this->hasMany('App\Model\ContentModel');
 	}
 
 }
