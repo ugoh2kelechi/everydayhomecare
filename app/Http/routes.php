@@ -17,6 +17,9 @@ Route::get('home', 'mainController@index');
 
 Route::get('admin', 'mainController@admin');
 
+Route::post('Pagename', 'pagesController@store');
+Route::post('Pagecontent', 'pagesController@store');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

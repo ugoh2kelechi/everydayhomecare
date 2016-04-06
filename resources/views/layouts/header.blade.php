@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US"><!--<![endif]-->
+<html lang="en-US" ng-app="everydayapp"><!--<![endif]-->
 <head>
     <!-- META TAGS -->
     <meta charset="UTF-8">
@@ -49,7 +49,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body ng-controller="mainCtrl">
 
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -80,7 +80,7 @@
         <!-- Website Logo -->
         <div class="logo clearfix">
             <a href="index.html">
-                <img src="images/logo_every.jpg" alt="Medicalpress">
+                <img src="images/logo_every.jpg" alt="Everyday Homecare">
             </a>
         </div>
 
@@ -278,6 +278,9 @@
 <script type='text/javascript' src="{{ asset('js/respond.min.js') }}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
 <script type='text/javascript' src="{{ asset('js/custom.js') }}"></script>
+
+<script type='text/javascript' src="{{ asset('js/angular.min.js') }}"></script>
+<script type='text/javascript' src="{{ asset('js/angular-control.js') }}"></script>
 
 </body>
 </html>

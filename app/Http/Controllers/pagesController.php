@@ -5,11 +5,13 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use Auth;
+use App\Http\Requests\pagesRequest;
 
 use App\Model\PageModel;
 
-class mainController extends Controller {
+use Auth;
+
+class pagesController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -18,8 +20,7 @@ class mainController extends Controller {
 	 */
 	public function index()
 	{
-    		return view('pages.home',['title'=>'Everyday Home Care || Home']);
-	
+		//
 	}
 
 	/**
@@ -37,9 +38,26 @@ class mainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(pagesRequest $request)
 	{
-		//
+
+		if(Auth::check())
+		{
+			$named = $request->get('name');
+			$menu_named = $request->get('menu_head');
+			$userid = Auth::user()->id;
+			PageModel::create(['name'=>$named, 'menu_name'=>$menu_named, 'user_id'=>$userid]);
+
+			return back()->with(['message'=>'The page name was saved successfully.']);
+			//return response()->json(['status'=>'Good and working', 'name'=>$named, 'menu'=>$menu_named, 'id'=> $userid]);
+			//send email here
+		}
+		else
+		{
+			// go back home
+				return view('/');
+		}
+		
 	}
 
 	/**
@@ -84,22 +102,6 @@ class mainController extends Controller {
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function admin()
-	{
-		if (Auth::check()) {
-
-			$pgnames  = PageModel::lists('name');
-			//$pgname = $pages->get('name');
-			$user = Auth::user();
-			return view('pages.admin_home',['title'=>'Admin || EveryDay Home Care','user'=>$user,'pages'=>$pgnames]);
-			}
-		else{
-			
-			return view('auth.login');
-			//return response()->json(['message'=> 'you are not logged in','error code'=>404], 404);
-		}
 	}
 
 }
