@@ -223,19 +223,25 @@
 
              <div class="well collapse" id="PageMedia">
                 
-                    <h1> Provide a page content. </h1>
+                    <h1> Provide a media file to a web page. </h1>
 
-                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>''))  !!}
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
 
                     {!! Form::label('pgnm','Select page name') !!}
-                    {!! Form::select('pagenames',$pages, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
-                    <br/>
-                    {!! Form::label('media_name','Page title') !!}
-                    {!! Form::text('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
 
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
                     {!! Form::label('media_type','Select media type') !!}
                     {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
                     <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
                     {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
                     {!! Form::close() !!}
 

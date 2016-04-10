@@ -12,7 +12,7 @@
      and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-     <meta name="everyday" content="Everyday Home care" description="home care, family care">
+     <meta name="everyday" content="Everyday Home care" description="home care, family care, health care">
     <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
 
     <!-- favicon -->
@@ -79,7 +79,7 @@
 
         <!-- Website Logo -->
         <div class="logo clearfix">
-            <a href="index.html">
+            <a href="{{ URL('/') }}">
                 <img src="images/logo_every.jpg" alt="Everyday Homecare">
             </a>
         </div>
@@ -298,7 +298,7 @@
                     <h3 class="title">Quick links</h3>
                     <ul>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="{{ URL('/about') }}">About us</a>
                         </li>
                         <li>
                             <a href="#">Contact us</a>

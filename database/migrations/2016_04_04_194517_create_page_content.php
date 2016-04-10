@@ -17,7 +17,7 @@ class CreatePageContent extends Migration {
 			$table->increments('pc_id');
 			$table->string('title');
 			$table->string('description');
-			$table->string('contents');
+			$table->text('contents');
 			$table->integer('user_id');
 			$table->integer('page_id')->unsigned();
 			$table->foreign('page_id')->references('id')->on('pages');

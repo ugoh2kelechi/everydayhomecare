@@ -8,7 +8,7 @@ class MediaModel extends Model {
 
 	protected $primeryKey = 'pm_id';
 
-	protected $fillable = ['media','media_type','user_id','content_id','created_at','updated_at'];
+	protected $fillable = ['media','media_describe','media_type','user_id','content_id','created_at','updated_at'];
 
 	protected $hidden = ['pm_id','updated_at','created_at'];
 

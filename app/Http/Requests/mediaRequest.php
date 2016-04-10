@@ -11,7 +11,7 @@ class mediaRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -22,7 +22,19 @@ class mediaRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+			'pagenames' => 'required',
+			'media_desc' => 'required',
+			'media' => 'required',
+			'media_type' => 'required'
+		];
+	}
+
+	public function attributes(){
+		return[
+			'pagenames' => 'page name',
+			'media_desc' => 'media description',
+			'media' => 'media file',
+			'media_type' => 'media type'
 		];
 	}
 

@@ -43,14 +43,13 @@ class contentController extends Controller {
 		
 		if(Auth::check()){
 
-			$pagenames = $request->get('pagenames');
-			$pg_id = $pagenames + 1;
+			$pageid = $request->get('pagenames');
 			$pg_title = $request->get('pg_title');
 			$pg_description = $request->get('pg_description');
 			$pg_content = $request->get('pg_content');
 			$userid = Auth::user()->id;
 
-			ContentModel::create(['title'=>$pg_title, 'description'=>$pg_description, 'contents'=>$pg_content, 'user_id'=>$userid, 'page_id' => $pg_id]);
+			ContentModel::create(['title'=>$pg_title, 'description'=>$pg_description, 'contents'=>$pg_content, 'user_id'=>$userid, 'page_id' => $pageid]);
 
 			return back()->with(['message' => 'The page contents where saved successfully']);
 				//send email later.

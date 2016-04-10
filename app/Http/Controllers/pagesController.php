@@ -55,7 +55,7 @@ class pagesController extends Controller {
 		else
 		{
 			// go back home
-				return view('/');
+				return view('auth.login');
 		}
 		
 	}

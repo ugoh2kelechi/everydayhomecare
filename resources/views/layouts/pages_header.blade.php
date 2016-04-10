@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>{{ $title }}</title>
+    <title>{{ $title.' || Everyday Home Care' }}</title>
 
     <!-- Define a view port to mobile devices to use - telling the browser to assume that
     the page is as wide as the device (width=device-width)
@@ -138,6 +138,34 @@
 
 
 
+<div class="banner clearfix"></div>
+<div class="page-top clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8 col-sm-7 ">
+                <h1 class="entry-title">{{ $title }}</h1>
+                <nav class="bread-crumb">
+                    <ul class="breadcrumb clearfix">
+                        <li><a href="{{ URL('/') }}">Everyday Home Care</a><span class="divider"></span></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 ">
+                <div id="search" class="widget clearfix">
+                    <form method="get" id="search-form" class="search-form" action="#">
+                        <div>
+                            <input type="text" value="" name="s" id="search-text" placeholder="Search"/>
+                            <input type="submit" id="search-submit" value=""/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @yield('content')
 
 
@@ -187,7 +215,7 @@
                     <h3 class="title">Quick links</h3>
                     <ul>
                         <li>
-                            <a href="{{ URL('/about') }}">About us</a>
+                            <a href="#">About us</a>
                         </li>
                         <li>
                             <a href="#">Contact us</a>

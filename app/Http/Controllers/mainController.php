@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\Model\PageModel;
+use App\Model\ContentModel;
 
 class mainController extends Controller {
 
@@ -19,6 +20,12 @@ class mainController extends Controller {
 	public function index()
 	{
     		return view('pages.home',['title'=>'Everyday Home Care || Home']);
+	
+	}
+
+	public function about()
+	{
+    		return view('pages.about',['title'=>'About us']);
 	
 	}
 
@@ -88,14 +95,18 @@ class mainController extends Controller {
 
 	public function admin()
 	{
-		if (Auth::check()) {
+		if (Auth::check()) 
+		{
+			$pgnames = ['' => 'Select'] + PageModel::lists('name', 'id');
+			$content = [''=>'Select']+ ContentModel::lists('title','pc_id');
 
-			$pgnames  = PageModel::lists('name');
 			//$pgname = $pages->get('name');
 			$user = Auth::user();
-			return view('pages.admin_home',['title'=>'Admin || EveryDay Home Care','user'=>$user,'pages'=>$pgnames]);
-			}
-		else{
+
+			return view('pages.admin_home',['title'=>'Admin || EveryDay Home Care','user'=>$user,'pages'=>$pgnames,'content'=>$content]);
+		}
+		else
+		{
 			
 			return view('auth.login');
 			//return response()->json(['message'=> 'you are not logged in','error code'=>404], 404);
