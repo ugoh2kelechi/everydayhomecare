@@ -10,6 +10,8 @@ use Auth;
 use App\Model\PageModel;
 use App\Model\ContentModel;
 
+use DB;
+
 class mainController extends Controller {
 
 	/**
@@ -19,7 +21,24 @@ class mainController extends Controller {
 	 */
 	public function index()
 	{
-    		return view('pages.home',['title'=>'Everyday Home Care || Home']);
+
+		$services = DB::table('pages')->select('id','name')->where('menu_name','SERVICES')->get(); 
+		$caregivers = DB::table('pages')->select('id','name')->where('menu_name','CAREGIVERS')->get();
+		$news = DB::table('pages')->select('id','name')->where('menu_name','NEWS/VIDEOS')->get();
+		$resources = DB::table('pages')->select('id','name')->where('menu_name','RESOURCES')->get();
+		$generals = DB::table('pages')->select('id','name')->where('menu_name','General Services')->get();
+		$quicks = DB::table('pages')->select('id','name')->where('menu_name','Quick links')->get();
+
+		//->value('name');
+		//$services = $serv->name;
+    	return view('pages.home',['title'=>'Everyday Home Care || Home',
+    		'services'=> $services,
+    		'caregivers'=> $caregivers,
+    		'news'=> $news,
+    		'resources'=> $resources,
+    		'generals'=> $generals,
+    		'quicks'=> $quicks
+    		]);
 	
 	}
 
@@ -46,7 +65,8 @@ class mainController extends Controller {
 	 */
 	public function store()
 	{
-		//
+
+		
 	}
 
 	/**
@@ -55,9 +75,12 @@ class mainController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($pagename)
 	{
-		//
+
+		$string = str_replace(".", " ", $pagename);
+		return response()->json(['status'=>'Working now', 'data'=>$string]);
+		
 	}
 
 	/**

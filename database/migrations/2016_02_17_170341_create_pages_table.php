@@ -17,6 +17,7 @@ class CreatePagesTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('menu_name');
+			$table->string('status');
 			$table->integer('user_id');
 			$table->timestamps();
 		});

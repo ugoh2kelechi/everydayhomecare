@@ -45,8 +45,9 @@ class pagesController extends Controller {
 		{
 			$named = $request->get('name');
 			$menu_named = $request->get('menu_head');
+			$status = $request->get('menu_status');
 			$userid = Auth::user()->id;
-			PageModel::create(['name'=>$named, 'menu_name'=>$menu_named, 'user_id'=>$userid]);
+			PageModel::create(['name'=>$named, 'menu_name'=>$menu_named, 'user_id'=>$userid, 'status'=>$status]);
 
 			return back()->with(['message'=>'The page name was saved successfully.']);
 			//return response()->json(['status'=>'Good and working', 'name'=>$named, 'menu'=>$menu_named, 'id'=> $userid]);

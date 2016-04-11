@@ -16,7 +16,7 @@
     <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon_edhc.jpg">
+    <link rel="shortcut icon" href="{{ asset('images/favicon_edhc.jpg') }}">
 
     <!-- Google Web Font -->
     <link href="http://fonts.googleapis.com/css?family=Raleway:400,100,500,600,700,800,900,300,200" rel="stylesheet" type="text/css">
@@ -80,7 +80,7 @@
         <!-- Website Logo -->
         <div class="logo clearfix">
             <a href="{{ URL('/') }}">
-                <img src="images/logo_every.jpg" alt="Everyday Homecare">
+                <img src="{{ asset('images/logo_every.jpg') }}" alt="Everyday Homecare">
             </a>
         </div>
 
@@ -93,20 +93,29 @@
                 <li>
                     <a href="#">OUR SERVICES</a>
                     <ul>
-                        <li><a href="#">Skilled Nursing</a></li>
+                        @foreach($services as $service)
+                        <li><a href="{{ $service->id }}">{{ $service->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li><a href="#">Alzheimer's & Dementia Care</a></li>
                         <li><a href="#">Professional Therapy</a> </li>
                         <li><a href="#">Home Care Aides</a> </li>
                         <li><a href="#">Parkinson's Care</a> </li>
                         <li><a href="#">Personal Care</a> </li>
+                        -->
                     </ul>
                 </li>
                 <li>
                     <a href="#">CAREGIVERS</a>
                     <ul>
+                        @foreach($caregivers as $caregiver)
+                            <li><a href="{{ $caregiver->id }}">{{ $caregiver->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li><a href="#">Becoming a Caregiver</a></li>
                         <li><a href="#">Credentialing & Training</a></li>
                         <li><a href="#">Caregiver Application</a></li>
+                        -->
                     </ul>
                 </li>
                 <li>
@@ -179,7 +188,7 @@
                     <h3 class="title">About EveryDay Home Care</h3>
                     <div class="textwidget">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<a href="{{ URL('/about') }}"> Read more</a></p>
                     </div>
                 </section>
             </div>

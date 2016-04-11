@@ -150,7 +150,8 @@
                         <h2> Administrative Dashboard </h2><hr>
                         <h4> Welcome: {{ $user->name }}</h4>
                         @if (count($errors) > 0)
-                        <div class="alert alert-danger">
+                        <div class="message alert alert-danger">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
                             <strong>Whoops!</strong> Check your input and try again.<br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -161,7 +162,8 @@
                     @endif
 
                     @if(Session::has('message'))
-                        <div class="alert alert-success">
+                        <div class="message alert alert-success">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
                             <strong>Success </strong>{{ Session::get('message') }}<br>
                         </div>
                     @endif
@@ -178,10 +180,14 @@
                     {!! Form::open(array('url'=>'Pagename', 'method'=>'POST','class'=>''))  !!}
                     {!! Form::label('menu','Select Menu') !!}
 
-                    {!! Form::select('menu_head',array('SERVICES'=>'Services','CAREGIVERS'=>'Caregivers','NEWS/VIDEOS'=>'News/Videos','RESOURCES'=>'Resources','General Services'=>'General Services','Quick links'=>'Quick links'), 'SERVICES', array('class'=>'form-control','id'=>'addname')) !!}
+                    {!! Form::select('menu_head',array(''=>'Select','SERVICES'=>'Services','CAREGIVERS'=>'Caregivers','NEWS/VIDEOS'=>'News/Videos','RESOURCES'=>'Resources','General Services'=>'General Services','Quick links'=>'Quick links'), 'Select', array('class'=>'form-control','id'=>'addname')) !!}
 
+                    <br/>
                     {!! Form::label('pgname','Page Name') !!}
                     {!! Form::text('name',old('name'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    {!! Form::select('menu_status',array('ON'=>'ON','OFF'=>'OFF'), 'ON', array('class'=>'form-control','id'=>'addname')) !!}
+                     <br/>
                     {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
                     {!! Form::close() !!}
 

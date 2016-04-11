@@ -16,7 +16,7 @@
     <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon_edhc.jpg">
+    <link rel="shortcut icon" href="{{ asset('images/favicon_edhc.jpg') }}">
 
     <!-- Google Web Font -->
     <link href="http://fonts.googleapis.com/css?family=Raleway:400,100,500,600,700,800,900,300,200" rel="stylesheet" type="text/css">
@@ -49,7 +49,7 @@
     <![endif]-->
 
 </head>
-<body ng-controller="mainCtrl">
+<body>
 
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -80,7 +80,7 @@
         <!-- Website Logo -->
         <div class="logo clearfix">
             <a href="{{ URL('/') }}">
-                <img src="images/logo_every.jpg" alt="Everyday Homecare">
+                <img src="{{ asset('images/logo_every.jpg') }}" alt="Everyday Homecare">
             </a>
         </div>
 
@@ -93,36 +93,51 @@
                 <li>
                     <a href="#">SERVICES</a>
                     <ul>
-                        <li><a href="#">Skilled Nursing</a></li>
+                        @foreach($services as $service)
+                        <li><a href="{{ URL('page',str_slug($service->name,'.')) }}">{{ $service->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li><a href="#">Alzheimer's & Dementia Care</a></li>
                         <li><a href="#">Professional Therapy</a> </li>
                         <li><a href="#">Home Care Aides</a> </li>
                         <li><a href="#">Parkinson's Care</a> </li>
                         <li><a href="#">Personal Care</a> </li>
-                        <li><a href="#">Waivers</a> </li>
-                        <li><a href="#">Surgery Assistance & Sitter Services</a> </li>
-                        <li><a href="#">Veteran Services</a> </li>
+                        -->
                     </ul>
                 </li>
                 <li>
                     <a href="#">CAREGIVERS</a>
                     <ul>
+                        @foreach($caregivers as $caregiver)
+                            <li><a href="{{ URL('page',str_slug($caregiver->name,'.')) }}">{{ $caregiver->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li><a href="#">Becoming a Caregiver</a></li>
                         <li><a href="#">Credentialing & Training</a></li>
                         <li><a href="#">Caregiver Application</a></li>
+                        -->
                     </ul>
                 </li>
                 <li>
                     <a href="#">NEWS/VIDEOS</a>
                     <ul>
+                        @foreach($news as $new)
+                            <li><a href="{{ URL('page',str_slug($new->name,'.')) }}">{{ $new->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">News</a></li>
                         <li><a href="#">Videos</a></li>
+                        -->
                     </ul>
                 </li>
                 <li>
                     <a href="#">RESOURCES</a>
                     <ul>
+                        @foreach($resources as $resource)
+                            <li><a href="{{ URL('page',str_slug($resource->name,'.')) }}">{{ $resource->name }}</a></li>
+                        @endforeach
+                        <!-- 
                         <li> <a href="#">Articles</a></li>
                         <li> <a href="#">Caregiver Burnout</a> </li>
                         <li> <a href="#">Home Care Funding Options</a></li>
@@ -130,9 +145,10 @@
                         <li> <a href="#">Second Wind Dreams</a></li>
                         <li> <a href="#">Types of Long-Term Care</a></li>
                         <li> <a href="#">Understanding Dementia Care</a></li>
+                         -->
                     </ul>
                 </li>
-                <li><a href="{{ URL('/admin') }}">CONTACT</a></li>
+                <li><a href="{{ URL('/contact') }}">CONTACT</a></li>
             </ul>
         </nav>
         <div id="responsive-menu-container"></div>
@@ -147,11 +163,11 @@
         <ul class="slides">
             <!--slide start-->
             <li>
-                <img src="images/slide2.jpg" alt="Medical Services <span>That You Can Trust</span>"/>
+                <img src="{{ asset('images/slide2.jpg') }}" alt="Everyday Home care <span>Providing care for the need</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
-                            <h1>Medical Services <span>That You Can Trust</span></h1>
+                            <h1>Everyday Home care <span>Providing care for the need</span></h1>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod.</p>
                             <a class="slider-button" href="doctors-three-columns.html">Read More</a>
                         </div>
@@ -162,7 +178,7 @@
 
             <!--slide start-->
             <li>
-                <img src="images/slide3.jpg" alt="We <span>Care</span> for <span>You</span>"/>
+                <img src="{{ asset('images/slide3.jpg') }}" alt="We <span>Care</span> for <span>You</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
@@ -177,7 +193,7 @@
 
             <!--slide start-->
             <li>
-                <img src="images/slide4.jpg" alt="Qualified Staff With <span>Expertise in Services We Offer</span>"/>
+                <img src="{{ asset('images/slide4.jpg') }}" alt="Qualified Staff With <span>Expertise in Services We Offer</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
@@ -191,7 +207,7 @@
 
             <!--slide start-->
             <li>
-                <img src="images/slide1.jpg" alt="Qualified Staff With <span>Expertise in Services We Offer</span>"/>
+                <img src="{{ asset('images/slide1.jpg') }}" alt="Qualified Staff With <span>Expertise in Services We Offer</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
@@ -262,7 +278,7 @@
                     <h3 class="title">About MedicalPress</h3>
                     <div class="textwidget">
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<a href="{{ URL('/about') }}"> Read more</a></p>
                     </div>
                 </section>
             </div>
@@ -271,6 +287,10 @@
                 <section class="widget animated fadeInLeft ae-animation-fadeInLeft">
                     <h3 class="title">General Services</h3>
                     <ul>
+                        @foreach($generals as $general)
+                            <li><a href="{{ URL('page',str_slug($general->name,'.')) }}">{{ $general->name }}</a></li>
+                        @endforeach
+                        <!--
                         <li>
                             <a href="#">Home Care Aides</a>
                         </li>
@@ -286,6 +306,7 @@
                         <li>
                             <a href="#">Conditions Treated</a>
                         </li>
+                        -->
                     </ul>
                 </section>
             </div>
@@ -297,8 +318,13 @@
                 <section  class="widget animated fadeInLeft">
                     <h3 class="title">Quick links</h3>
                     <ul>
+                        @foreach($quicks as $quick)
+                            <li><a href="{{ URL('page',str_slug($quick->name,'.')) }}">{{ $quick->name }}</a></li>
+                        @endforeach
+                        <!--
+                        
                         <li>
-                            <a href="{{ URL('/about') }}">About us</a>
+                            <a href="#">About us</a>
                         </li>
                         <li>
                             <a href="#">Contact us</a>
@@ -312,6 +338,7 @@
                         <li>
                             <a href="#">Policy</a>
                         </li>
+                        -->
                     </ul>
                 </section>
             </div>

@@ -8,7 +8,7 @@ class PageModel extends Model {
 
 	protected $primeryKey = 'id';
 
-	protected $fillable = ['name','menu_name','user_id'];
+	protected $fillable = ['name','menu_name','user_id','status'];
 
 	protected $hidden = ['id','user_id'];
 
