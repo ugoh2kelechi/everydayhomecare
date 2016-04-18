@@ -44,14 +44,36 @@ class pagesController extends Controller {
 		if(Auth::check())
 		{
 			$named = $request->get('name');
+			$slug_name = str_slug($named,'.');
 			$menu_named = $request->get('menu_head');
 			$status = $request->get('menu_status');
-			$userid = Auth::user()->id;
-			PageModel::create(['name'=>$named, 'menu_name'=>$menu_named, 'user_id'=>$userid, 'status'=>$status]);
+			
+
+			$mediaName = $request->file('page_media')->getClientOriginalName();
+
+			$res = $request->file('page_media')->move(base_path().'/public/images/contents/',$mediaName);
+			
+			$goingMediaName = 'images/contents/'.$mediaName;
+
+			if($res)
+			{
+				$userid = Auth::user()->id;
+				PageModel::create(['name'=>$named, 'header_img' => $goingMediaName, 'slug_name'=>$slug_name, 'menu_name'=>$menu_named, 'user_id'=>$userid, 'status'=>$status]);
 
 			return back()->with(['message'=>'The page name was saved successfully.']);
 			//return response()->json(['status'=>'Good and working', 'name'=>$named, 'menu'=>$menu_named, 'id'=> $userid]);
 			//send email here
+
+			}
+			else
+			{
+				return back()->withErrors('Error uploading file, please try again.');
+			}
+
+
+
+
+
 		}
 		else
 		{

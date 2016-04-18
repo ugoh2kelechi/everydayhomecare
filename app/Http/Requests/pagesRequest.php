@@ -23,6 +23,7 @@ class pagesRequest extends Request {
 	{
 		return [
 			'menu_head' => 'required',
+			'page_media' => 'required',
 			'name' => 'required|unique:pages,name'
 		];
 	}

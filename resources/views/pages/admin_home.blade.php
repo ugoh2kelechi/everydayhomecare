@@ -55,12 +55,12 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">View</a>
+                                        <span class="glyphicon glyphicon-th-list"></span><a data-toggle="collapse"  href="#newsevent">Blogs</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Add</a>
+                                        <span class="glyphicon glyphicon-plus"></span><a data-toggle="collapse"  href="#newsevent">Add Post</a>
                                     </td>
                                 </tr>
                             </table>
@@ -79,18 +79,18 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="#">Change Password</a>
+                                        <span class="glyphicon glyphicon-list"></span><a data-toggle="collapse"  href="#partners">Activities</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="#">Activities</a>
+                                        <span class="glyphicon glyphicon-user"></span><a data-toggle="collapse"  href="#partners">Partners</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-trash text-danger"></span>
-                                        <a href="" class="text-danger"> Delete Account </a>
+                                        <a data-toggle="collapse"  href="#partners" class="text-danger"> Delete Account </a>
                                     </td>
                                 </tr>
                             </table>
@@ -109,24 +109,30 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-usd"></span><a href="#">Contact Form</a>
+                                        <span class="glyphicon glyphicon-envelope"></span><a data-toggle="collapse"  href="#contactform">Contact Form</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-user"></span><a href="#">Job Application</a>
+                                        <span class="glyphicon glyphicon-tasks"></span><a data-toggle="collapse"  href="#adverts">Testimony</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tasks"></span><a href="#">Appointments</a>
+                                        <span class="glyphicon glyphicon-user"></span><a data-toggle="collapse"  href="#jobapply">Job Application</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-shopping-cart"></span><a href="#">Subscribers</a>
+                                        <span class="glyphicon glyphicon-tasks"></span><a data-toggle="collapse"  href="#appointment">Appointments</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><a data-toggle="collapse"  href="#subscribe">Subscribers</a>
+                                    </td>
+                                </tr>
+
                             </table>
                         </div>
                     </div>
@@ -152,7 +158,7 @@
                         @if (count($errors) > 0)
                         <div class="message alert alert-danger">
                         <button type="button" class="close" aria-hidden="true">&times;</button>
-                            <strong>Whoops!</strong> Check your input and try again.<br><br>
+                            <strong>Sorry !</strong> Check your input and try again.<br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -177,7 +183,7 @@
                
                     <h1> Provide a menu for website. </h1>
 
-                    {!! Form::open(array('url'=>'Pagename', 'method'=>'POST','class'=>''))  !!}
+                    {!! Form::open(array('url'=>'Pagename', 'method'=>'POST','class'=>'','files'=>true))  !!}
                     {!! Form::label('menu','Select Menu') !!}
 
                     {!! Form::select('menu_head',array(''=>'Select','SERVICES'=>'Services','CAREGIVERS'=>'Caregivers','NEWS/VIDEOS'=>'News/Videos','RESOURCES'=>'Resources','General Services'=>'General Services','Quick links'=>'Quick links'), 'Select', array('class'=>'form-control','id'=>'addname')) !!}
@@ -185,6 +191,10 @@
                     <br/>
                     {!! Form::label('pgname','Page Name') !!}
                     {!! Form::text('name',old('name'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('page_file','Browse header image') !!}
+                    {!! Form::file('page_media',Input::old('page_media'),array('class'=>'form-control','id'=>'addname')) !!}
 
                     {!! Form::select('menu_status',array('ON'=>'ON','OFF'=>'OFF'), 'ON', array('class'=>'form-control','id'=>'addname')) !!}
                      <br/>
@@ -203,7 +213,7 @@
                 
                     <h1> Provide a page content. </h1>
 
-                    {!! Form::open(array('url'=>'Pagecontent', 'method'=>'POST','class'=>''))  !!}
+                    {!! Form::open(array('url'=>'Pagecontent', 'method'=>'POST','class'=>'','files'=>true))  !!}
 
                     {!! Form::label('pgnm','Select Menu') !!}
                     {!! Form::select('pagenames',$pages, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
@@ -227,9 +237,45 @@
 
 
 
+<!--  ========================  Begins media details ==========================================  -->
+
+
              <div class="well collapse" id="PageMedia">
                 
                     <h1> Provide a media file to a web page. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select Menu') !!}
+                    {!! Form::select('pagenames',$pages, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins news and event  ==========================================  -->
+
+                
+             <div class="well collapse" id="newsevent">
+                
+                    <h1> Provide blog posts </h1>
 
                     {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
 
@@ -255,6 +301,209 @@
 
                 
             </div>
+
+
+
+<!--  ========================  Begins partners details  ==========================================  -->
+
+
+              <div class="well collapse" id="partners">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins contact us form details  ==========================================  -->
+
+
+
+              <div class="well collapse" id="contactform">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins  Testimony details  ==========================================  -->
+
+
+
+              <div class="well collapse" id="adverts">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'testmonypost', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Name') !!}
+                    {!! Form::text('testy_name',Input::old('testy_name'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Testimony description') !!}
+                    {!! Form::textarea('testy_msg',Input::old('testy_msg'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse picture') !!}
+                    {!! Form::file('testy_img',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins job application details  ==========================================  -->
+
+
+            <div class="well collapse" id="jobapply">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins Appointments details  ==========================================  -->
+
+
+                    <div class="well collapse" id="appointment">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+
+<!--  ========================  Begins Subscriber details  ==========================================  -->
+
+
+
+              <div class="well collapse" id="subscribe">
+                
+                    <h1> Provide partners informations. </h1>
+
+                    {!! Form::open(array('url' => 'pageMedia', 'method'=>'POST','class'=>'','files'=>true))  !!}
+
+                    {!! Form::label('pgnm','Select page name') !!}
+                    {!! Form::select('pagenames',$content, Input::old('pagenames'), array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br>
+                    {!! Form::label('mediadesc','Media description') !!}
+                    {!! Form::text('media_desc',Input::old('media_desc'),array('class'=>'form-control','id'=>'addname')) !!}
+
+                    
+                    {!! Form::label('media_type','Select media type') !!}
+                    {!! Form::select('media_type',array('Image'=>'Image','Video'=>'Video'), 'Image', array('class'=>'form-control','id'=>'addname')) !!}
+
+                    <br/>
+                    {!! Form::label('media_file','Browse file') !!}
+                    {!! Form::file('media',Input::old('pg_title'),array('class'=>'form-control','id'=>'addname')) !!}
+                    
+                    {!! Form::submit('Submit',array('class'=>'btn btn-primary')) !!}
+                    {!! Form::close() !!}
+
+                    <br><hr><br>
+
+                
+            </div>
+
+<!--  ========================  details  ==========================================  -->
+
+
+
 
 
 

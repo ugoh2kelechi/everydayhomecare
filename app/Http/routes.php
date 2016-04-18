@@ -16,7 +16,8 @@ Route::get('/', 'mainController@index');
 Route::get('home', 'mainController@index');
 
 Route::get('admin', 'mainController@admin');
-Route::get('about', 'mainController@about');
+Route::get('contact', 'mainController@contact');
+Route::get('services', 'mainController@services');
 
 Route::get('page/{pagename}','mainController@show');
 

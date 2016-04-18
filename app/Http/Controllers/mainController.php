@@ -21,31 +21,25 @@ class mainController extends Controller {
 	 */
 	public function index()
 	{
-
-		$services = DB::table('pages')->select('id','name')->where('menu_name','SERVICES')->get(); 
-		$caregivers = DB::table('pages')->select('id','name')->where('menu_name','CAREGIVERS')->get();
-		$news = DB::table('pages')->select('id','name')->where('menu_name','NEWS/VIDEOS')->get();
-		$resources = DB::table('pages')->select('id','name')->where('menu_name','RESOURCES')->get();
-		$generals = DB::table('pages')->select('id','name')->where('menu_name','General Services')->get();
-		$quicks = DB::table('pages')->select('id','name')->where('menu_name','Quick links')->get();
-
 		//->value('name');
 		//$services = $serv->name;
-    	return view('pages.home',['title'=>'Everyday Home Care || Home',
-    		'services'=> $services,
-    		'caregivers'=> $caregivers,
-    		'news'=> $news,
-    		'resources'=> $resources,
-    		'generals'=> $generals,
-    		'quicks'=> $quicks
-    		]);
+    	return view('pages.home',['title'=>'Home']);
 	
 	}
 
 	public function about()
 	{
     		return view('pages.about',['title'=>'About us']);
-	
+	}
+
+	public function contact()
+	{
+    		return view('pages.contact',['title'=>'Contact']);
+	}
+
+	public function services()
+	{
+    		return view('pages.services',['title'=>'Services']);
 	}
 
 	/**
@@ -78,8 +72,47 @@ class mainController extends Controller {
 	public function show($pagename)
 	{
 
-		$string = str_replace(".", " ", $pagename);
-		return response()->json(['status'=>'Working now', 'data'=>$string]);
+		if($pagename === 'frequently.questions')
+		{
+			return view('pages.faq',['title'=>'Frequently asked questions']);
+
+		}elseif ($pagename === 'testimonies') 
+		{
+			return view('pages.testimony',['title'=>'Testimony']);
+
+		}elseif ($pagename === 'site.map') 
+		{
+			return view('pages.sitemap',['title'=>'Site map']);
+		}else
+		{
+			$string = str_replace(".", " ", $pagename);
+
+			$pgdetail = DB::table('pages')
+										->join('page_content','pages.id','=','page_content.page_id')
+										->where('pages.slug_name',$pagename)->get();
+
+			//->join('page_media','pages.id','=','page_media.content_id')
+
+			$valueid = "";
+
+			foreach ($pgdetail as $pgdetails) {
+
+				$valueid = $pgdetails->page_id;
+			}
+
+			$images = DB::table('page_media')->where('content_id','=',$valueid)->get();
+
+			
+
+
+			return view('pages.page',['title'=>$string, 'pgdata'=>$pgdetail, 'images'=>$images]);
+			//return view('pages.page',['status'=>'Working', 'title'=>$string, 'pgdata'=>$pgdetail]);
+			//tent = $pgdetail->paged;
+		}
+
+
+		
+		//
 		
 	}
 
@@ -126,11 +159,12 @@ class mainController extends Controller {
 			//$pgname = $pages->get('name');
 			$user = Auth::user();
 
-			return view('pages.admin_home',['title'=>'Admin || EveryDay Home Care','user'=>$user,'pages'=>$pgnames,'content'=>$content]);
+			return view('pages.admin_home',
+				['title'=>'Admin','user'=>$user,'pages'=>$pgnames,'content'=>$content]);
 		}
 		else
 		{
-			
+
 			return view('auth.login');
 			//return response()->json(['message'=> 'you are not logged in','error code'=>404], 404);
 		}

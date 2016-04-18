@@ -10,16 +10,17 @@
 
             <div class="col-md-4">
                 <div class="features-intro clearfix">
-                    <h2><span>EveryDay Home Care</span> Providing Care</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <a class="read-more" href="services-two-columns.html">View Our Services</a>
+                    <h3 id="homeword"><span>EveryDay Home Care</span></h3>
+                    <p id="homeword">Everyday Home Care is a licensed Medicaid and Medicare Certified Home Health agency. We provide nursing care and supportive services in the patient’s home or residential facility, 24 hours a day, 7-days a week. Your loved one deserves care that’s nothing less than extraordinary. </p> <p>At Everyday Home Care, our Registered Nurse Director of Nursing leads experienced, trustworthy, compassionate caregivers who provide a full range of services in the comfort and safety of home.</p>
+                    <a class="read-more" href="{{ URL('services') }}">View Our Services</a>
                 </div>
             </div>
 
             <div class="col-md-8">
                 <div class="row">
-                    <a href="#"> 
+                    
                     <div class="col-sm-6 single-feature">
+                    <a href="{{ URL('page/home.care.aides') }}">
                         <div class="row">
                             <div class="col-sm-3 icon-wrapper">
                                 <i class="fa fa-plus-square fa-custom"></i>
@@ -29,50 +30,57 @@
                                 <p>Includes:  Private Duty Nursing, Intermittent Homecare, Respite Care, Pediatric Care, Care for People with Disabilities.</p>
                             </div>
                         </div>
+                        </a>
                     </div>
-                    </a>
+                    
 
-                    <a href="#"> 
+                    
                     <div class="col-sm-6 single-feature">
+                      <a href="{{ URL('page/professional.therapy') }}"> 
                         <div class="row">
                             <div class="col-sm-3 icon-wrapper">
                                 <i class="fa fa-medkit fa-custom"></i>
                             </div>
                             <div class="col-sm-9">
-                                <h3>Pediatric Care</h3>
+                                <h3>Professional Therapy</h3>
                                 <p>Include Services: Behavioral Health, Disabilities Assistance, Therapy Services, Physical Therapy (PT), Respite Care</p>
                             </div>
                         </div>
+                        </a>
                     </div>
-                    </a>
+                    
 
-                    <a href="#"> 
+                     
                     <div class="col-sm-6 single-feature">
+                    <a href="{{ URL('page/personal.care') }}">
                         <div class="row">
                             <div class="col-sm-3 icon-wrapper">
                                 <i class="fa fa-user-md fa-custom"></i>
                             </div>
                             <div class="col-sm-9">
-                                <h3>Companion Care</h3>
+                                <h3>Personal Care</h3>
                                 <p>Services Include: Daily Activity Assistance, Reminder Services, Meal Preparation Services, Laundry and Grocery Services.</p>
                             </div>
                         </div>
+                        </a>
                     </div>
-                    </a>
+                    
 
-                    <a href="#"> 
+                    
                     <div class="col-sm-6 single-feature">
+                    <a href="{{ URL('page/autism.care') }}"> 
                         <div class="row">
                             <div class="col-sm-3 icon-wrapper">
                                 <i class="fa fa-ambulance fa-custom"></i> 
                             </div>
                             <div class="col-sm-9">
-                                <h3>Conditions Treated</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+                                <h3>Austism</h3>
+                                <p>Community inclusion, Respite, Temporary crisis services, Supported employment, Behavioral specialist.</p>
                             </div>
                         </div>
+                        </a>
                     </div>
-                    </a>
+                    
 
 
                 </div>
@@ -82,176 +90,100 @@
 </div>
 <!--general services end-->
 
-<!--doctors section-->
-<div class="home-doctors  clearfix">
-    <div class="container">
-        <div class="slogan-section animated fadeInUp clearfix">
-            <h2>Meet our <span>Partners</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3 col-sm-6  text-center">
-                <div class="common-doctor animated fadeInUp clearfix">
-                    <figure>
-                        <a href="doctor-alex.html" title="Dr.Addison Alexander">
-                            <img src="images/temp-images/doctor-2.jpg" alt="doctor-2">
-                        </a>
-                    </figure>
-                    <div class="text-content">
-                        <h5><a href="doctor-alex.html">Dr.Addison Alexander</a></h5>
-                        <div class="for-border"></div>
-                        <p>
-                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
-                        </p>
-                    </div>
-                </div>
-                <a class="read-more" href="doctor-alex.html">Read More</a>
-            </div>
-            <div class="col-md-3 col-sm-6  text-center">
-                <div class="common-doctor animated fadeInUp clearfix">
-                    <figure>
-                        <a href="doctor-becka.html" title="Dr.Adaline Becka">
-                            <img src="images/temp-images/doctor-1.jpg" alt="doctor-1">
-                        </a>
-                    </figure>
-                    <div class="text-content">
-                        <h5><a href="doctor-becka.html">Dr.Adaline Becka</a></h5>
-                        <div class="for-border"></div>
-                        <p>
-                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
-                        </p>
-                    </div>
-                </div>
-                <a class="read-more" href="doctor-becka.html">Read More</a>
-            </div>
-
-            <div class="visible-sm clearfix margin-gap"></div>
-
-            <div class="col-md-3 col-sm-6  text-center">
-                <div class="common-doctor animated fadeInUp clearfix">
-                    <figure>
-                        <a href="doctor-bert.html" title="Dr.Andrew Bert">
-                            <img src="images/temp-images/doctor-4.jpg" alt="doctor-4">
-                        </a>
-                    </figure>
-                    <div class="text-content">
-                        <h5><a href="doctor-bert.html">Dr.Andrew Bert</a></h5>
-                        <div class="for-border"></div>
-                        <p>
-                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
-                        </p>
-                    </div>
-                </div>
-                <a class="read-more" href="doctor-bert.html">Read More</a>
-            </div>
-
-            <div class="col-md-3 col-sm-6  text-center">
-                <div class="common-doctor animated fadeInUp clearfix">
-                    <figure>
-                        <a href="doctor-taleebin.html" title="Dr.Orana Taleebin">
-                            <img src="images/temp-images/doctor-3.jpg" alt="doctor-3">
-                        </a>
-                    </figure>
-                    <div class="text-content">
-                        <h5><a href="doctor-taleebin.html">Dr.Orana Taleebin</a></h5>
-                        <div class="for-border"></div>
-                        <p>
-                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
-                        </p>
-                    </div>
-                </div>
-                <a class="read-more" href="doctor-taleebin.html">Read More</a>
-            </div>
-            <div class="visible-sm clearfix margin-gap"></div>
-        </div>
-    </div>
-</div>
-<!--doctors section end-->
 
 <!--blog posts section-->
 <div class="home-blog text-center clearfix">
     <div class="container">
         <div class="slogan-section animated fadeInUp clearfix">
-            <h2>Latest News from <span>Everyday Home Care</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <h2>Area where services is covered by <span>Everyday Home Care</span></h2>
+            <p>This is the listing of area where Everyday home care render services in the united states.</p>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <article class="common-blog-post animated fadeInRight clearfix">
+
+            <div class="col-md-8">
+                <article class="common-blog-post animated fadeInRight clearfix" id="common-blog-post">
                     <figure>
                         <a href="image-post-format.html" title="Image Post Format">
-                            <img src="images/temp-images/news-2-732x447.jpg"  alt="news-2" />
+                            <img src="images/areas2.jpg"  alt="news-2" />
                         </a>
                     </figure>
                     <div class="text-content clearfix">
-                        <h5><a href="image-post-format.html">Image Post Format</a></h5>
-                        <div class="entry-meta">
-                            <span>10 May, 2014</span>, by <a href="#" title="Posts by John Doe">John Doe</a>
-                        </div>
-                        <div class="for-border"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat&hellip; </p>
-                    </div>
-                </article>
-                <a class="read-more" href="image-post-format.html">Read More</a>
-            </div>
-            <div class="col-md-4">
-                <article class="common-blog-post animated fadeInRight clearfix">
-                    <div class="gallery gallery-slider clearfix loading">
-                        <ul class="slides">
-                            <li>
-                                <a href="images/temp-images/gallery-1.jpg" title="" >
-                                    <img src="images/temp-images/gallery-1.jpg" alt="gallery-1" />
-                                </a>
-                            </li>
-                            <li class="flex-active-slide">
-                                <a href="images/temp-images/gallery-2.jpg" title="" >
-                                    <img src="images/temp-images/gallery-2.jpg" alt="gallery-2" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="images/temp-images/gallery-3.jpg" title="" >
-                                    <img src="images/temp-images/gallery-3.jpg" alt="gallery-3" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="images/temp-images/gallery-2.jpg" title="" >
-                                    <img src="images/temp-images/gallery-2.jpg" alt="gallery-4" />
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="text-content clearfix">
-                        <h5><a href="gallery-post-format.html">Gallery Post Format</a></h5>
-                        <div class="entry-meta">
-                            <span>10 May, 2014</span>, by <a href="#" title="Posts by John Doe">John Doe</a>
-                        </div>
-                        <div class="for-border"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat&hellip; </p>
-                    </div>
-                </article>
+                       <table class="col-md-11" id="tabbb">
+                           <caption>List of region and county. </caption>
+                           <thead>
+                               <tr>
+                                   <th>Region</th>
+                                   <th>County</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td> SouthEast </td>
+                                   <td>Bucks, Delaware, Montgomery, Philadelphia and Chester </td>
+                               </tr>
+                               <tr>
+                                   <td></td>
+                                   <td></td>
+                               </tr>
+                               <tr>
+                                   <td> NorthEast </td>
+                                   <td> Lehigh, Northampton, Pike, Monroe, Carbon, Schuylkill, Reading, Lancaster, Lebanon, Adams, York, Bradford, Lackawanna, Luzerne, Sullivan, Susquehanna, Wyoming.</td>
+                               </tr>
+                           </tbody>
+                       </table>
 
-                <a class="read-more" href="gallery-post-format.html">Read More</a>
+                    </div>
+                </article>
             </div>
 
             <div class="col-md-4">
-                <article class="common-blog-post animated fadeInRight clearfix">
-                    <div class="video clearfix">
-                        <div class="video-wrapper clearfix">
-                            <iframe src="//player.vimeo.com/video/75594702?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <div class="fb-page" data-href="https://www.facebook.com/Everyday-Home-Care-LLC-557796061042228/" data-tabs="timeline" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" style="margin-bottom: 8px;"></div>
+
+               
+
+                    <!--appointment form-->
+                    
+            <div class="row col-md-12">
+                <div class="slogan-section animated fadeInUp clearfix">
+                    <h3>Make an Appointment</h3>
+                <div class="appointment-form animated fadeInDown clearfix">
+
+                    <form id="appointment_form_three" action="appointment_form_handler.php" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" name="name" id="app-name" class="required" placeholder="Name" title="* Please provide your name"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" name="number" id="app-number" class="required number" placeholder="Phone Number" title="* Please provide a valid phone number."/>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <input type="email" name="email" id="app-email" class="required email" placeholder="Email Address" title="* Please provide a valid email address"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" name="date" id="datepicker" class="required" placeholder="Appointment Date" title="* Please provide appointment date">
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-content clearfix">
-                        <h5><a href="video-post-format.html">The Hero In All Of Us</a></h5>
-                        <div class="entry-meta">
-                            <span>10 May, 2014</span>, by <a href="#" title="Posts by John Doe">John Doe</a>
-                        </div>
-                        <div class="for-border"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat&hellip; </p>
-                    </div>
-                </article>
-                <a class="read-more" href="video-post-format.html">Read More</a>
+                        <textarea name="message" id="app-message" class="required"  placeholder="Message" title="* Please provide your message"></textarea>
+                        <input type="submit" name="Submit" class="btn" value="SEND"/>
+                        <img src="images/loader.gif" id="appointment-loader" alt="Loading...">
+                        <input type="hidden" name="action" value="make_appointment">
+                        <div id="message-sent"></div>
+                        <div id="error-container"></div>
+                    </form>
+                </div>
             </div>
+        </div>
+
+    
+
+
+
+
+
+            </div>
+
         </div>
     </div>
 </div>

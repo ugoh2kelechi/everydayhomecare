@@ -145,6 +145,10 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		'App\Providers\HomeHeaderServiceProvider',
+		'App\Providers\HomeServiceProvider',
+		'App\Providers\PageServiceProvider',
+		'App\Providers\PageContentServiceProvider',
 
 	],
 

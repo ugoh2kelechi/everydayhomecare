@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>{{ $title }}</title>
+    <title>{{ $title.' || Everyday Home Care' }}</title>
 
     <!-- Define a view port to mobile devices to use - telling the browser to assume that
     the page is as wide as the device (width=device-width)
@@ -51,6 +51,15 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=441277486073253";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
@@ -64,7 +73,7 @@
             <!--opening hours-->
             <div class="col-md-7 text-right">
                 <p>
-                    Opening Hours : <span>Monday to Saturday - 8am to 9pm</span>
+                    Opening Hours : <span>Monday to Saturday - 8am to 5pm</span>
                     <br class="visible-xs">Contact : <span>+1-610-966-2676 </span>
                 </p>
             </div>
@@ -91,18 +100,11 @@
                     <a href="{{ URL('/') }}">HOME</a>
                 </li>
                 <li>
-                    <a href="#">SERVICES</a>
+                    <a href="{{ URL('services') }}">SERVICES</a>
                     <ul>
                         @foreach($services as $service)
                         <li><a href="{{ URL('page',str_slug($service->name,'.')) }}">{{ $service->name }}</a></li>
-                        @endforeach
-                        <!--
-                        <li><a href="#">Alzheimer's & Dementia Care</a></li>
-                        <li><a href="#">Professional Therapy</a> </li>
-                        <li><a href="#">Home Care Aides</a> </li>
-                        <li><a href="#">Parkinson's Care</a> </li>
-                        <li><a href="#">Personal Care</a> </li>
-                        -->
+                        @endforeach 
                     </ul>
                 </li>
                 <li>
@@ -111,11 +113,6 @@
                         @foreach($caregivers as $caregiver)
                             <li><a href="{{ URL('page',str_slug($caregiver->name,'.')) }}">{{ $caregiver->name }}</a></li>
                         @endforeach
-                        <!--
-                        <li><a href="#">Becoming a Caregiver</a></li>
-                        <li><a href="#">Credentialing & Training</a></li>
-                        <li><a href="#">Caregiver Application</a></li>
-                        -->
                     </ul>
                 </li>
                 <li>
@@ -124,11 +121,6 @@
                         @foreach($news as $new)
                             <li><a href="{{ URL('page',str_slug($new->name,'.')) }}">{{ $new->name }}</a></li>
                         @endforeach
-                        <!--
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Videos</a></li>
-                        -->
                     </ul>
                 </li>
                 <li>
@@ -137,18 +129,9 @@
                         @foreach($resources as $resource)
                             <li><a href="{{ URL('page',str_slug($resource->name,'.')) }}">{{ $resource->name }}</a></li>
                         @endforeach
-                        <!-- 
-                        <li> <a href="#">Articles</a></li>
-                        <li> <a href="#">Caregiver Burnout</a> </li>
-                        <li> <a href="#">Home Care Funding Options</a></li>
-                        <li> <a href="#">Accepted Insurance</a></li>
-                        <li> <a href="#">Second Wind Dreams</a></li>
-                        <li> <a href="#">Types of Long-Term Care</a></li>
-                        <li> <a href="#">Understanding Dementia Care</a></li>
-                         -->
                     </ul>
                 </li>
-                <li><a href="{{ URL('/contact') }}">CONTACT</a></li>
+                <li><a href="{{ URL('contact') }}">CONTACT</a></li>
             </ul>
         </nav>
         <div id="responsive-menu-container"></div>
@@ -163,13 +146,12 @@
         <ul class="slides">
             <!--slide start-->
             <li>
-                <img src="{{ asset('images/slide2.jpg') }}" alt="Everyday Home care <span>Providing care for the need</span>"/>
+                <img src="{{ asset('images/slider5.jpg') }}" alt="Everyday Home care <span>Providing care for the need</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
-                        <div class="slide-content clearfix ">
-                            <h1>Everyday Home care <span>Providing care for the need</span></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod.</p>
-                            <a class="slider-button" href="doctors-three-columns.html">Read More</a>
+                        <div class="slide-content clearfix pull-right">
+                            <h1><span>Providing Care for all of your needs</span></h1>
+                            <a class="slider-button" href="{{ URL('page/home.care.aides')}}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -178,12 +160,11 @@
 
             <!--slide start-->
             <li>
-                <img src="{{ asset('images/slide3.jpg') }}" alt="We <span>Care</span> for <span>You</span>"/>
+                <img src="{{ asset('images/homecare1.jpg') }}" alt="We <span>Care</span> for <span>You</span>"/>
                 <div class="content-wrapper clearfix">
                     <div class="container">
-                        <div class="slide-content clearfix ">
+                        <div class="slide-content clearfix "> 
                             <h1>We <span>Care</span> for <span>You</span></h1>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                             <a class="slider-button" href="doctors-three-columns.html">Read More</a>
                         </div>
                     </div>
@@ -197,7 +178,7 @@
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
-                            <h1>Qualified Staff With <span>Expertise in Services We Offer</span></h1>
+                            <h1><span style="color: #ccc;">Expertise in health services</span></h1>
                             <a class="slider-button" href="doctors-three-columns.html">Read More</a>
                         </div>
                     </div>
@@ -211,7 +192,7 @@
                 <div class="content-wrapper clearfix">
                     <div class="container">
                         <div class="slide-content clearfix ">
-                            <h1>Qualified Staff With <span>Expertise in Services We Offer</span></h1>
+                            <h1><span style="color: #ccc;">Qualified Staff in Services</span></h1>
                             <a class="slider-button" href="doctors-three-columns.html">Read More</a>
                         </div>
                     </div>
@@ -223,50 +204,11 @@
     </div>
 </div>
 
-<!--appointment form-->
-<div class="appoint-var-three clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="slogan-section animated fadeInUp clearfix">
-                    <h3>Make an Appointment</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-                <div class="appointment-form animated fadeInDown clearfix">
 
-                    <form id="appointment_form_three" action="appointment_form_handler.php" method="post">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <input type="text" name="name" id="app-name" class="required" placeholder="Name" title="* Please provide your name"/>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" name="number" id="app-number" class="required number" placeholder="Phone Number" title="* Please provide a valid phone number."/>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <input type="email" name="email" id="app-email" class="required email" placeholder="Email Address" title="* Please provide a valid email address"/>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" name="date" id="datepicker" class="required" placeholder="Appointment Date" title="* Please provide appointment date">
-                            </div>
-                        </div>
-                        <textarea name="message" id="app-message" class="required"  placeholder="Message" title="* Please provide your message"></textarea>
-                        <input type="submit" name="Submit" class="btn" value="SEND"/>
-                        <img src="images/loader.gif" id="appointment-loader" alt="Loading...">
-                        <input type="hidden" name="action" value="make_appointment">
-                        <div id="message-sent"></div>
-                        <div id="error-container"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--appointment form end-->
 <div id="spacer"> </div>
 
 @yield('content')
-
 
 <!--page footer-->
 <footer id="main-footer" class="site-footer clearfix">
@@ -275,10 +217,25 @@
             <!--about widget-->
             <div class="col-md-3 col-sm-6">
                 <section  class="widget animated fadeInLeft">
-                    <h3 class="title">About MedicalPress</h3>
+                    <h3 class="title">About EveryDay Home Care</h3>
                     <div class="textwidget">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<a href="{{ URL('/about') }}"> Read more</a></p>
+                        <?php $i = 0; ?>
+                        @foreach($abouts as $about)
+                          <p> 
+                          {{ str_limit($about->contents, 300) }}
+                            <a href="{{ URL('/page/about.us') }}"> Read more</a>
+                            <?php 
+                                $i++;
+                                if ($i == 1) {
+                                    break;
+                                }
+
+                            ?>
+                          </p>
+
+                        @endforeach
+
+
                     </div>
                 </section>
             </div>
@@ -290,23 +247,6 @@
                         @foreach($generals as $general)
                             <li><a href="{{ URL('page',str_slug($general->name,'.')) }}">{{ $general->name }}</a></li>
                         @endforeach
-                        <!--
-                        <li>
-                            <a href="#">Home Care Aides</a>
-                        </li>
-                        <li>
-                            <a href="#">Pediatric Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Companion Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Personal Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Conditions Treated</a>
-                        </li>
-                        -->
                     </ul>
                 </section>
             </div>
@@ -320,25 +260,7 @@
                     <ul>
                         @foreach($quicks as $quick)
                             <li><a href="{{ URL('page',str_slug($quick->name,'.')) }}">{{ $quick->name }}</a></li>
-                        @endforeach
-                        <!--
-                        
-                        <li>
-                            <a href="#">About us</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact us</a>
-                        </li>
-                        <li>
-                            <a href="#">Testimonies</a>
-                        </li>
-                        <li>
-                            <a href="#">Careers</a>
-                        </li>
-                        <li>
-                            <a href="#">Policy</a>
-                        </li>
-                        -->
+                        @endforeach  
                     </ul>
                 </section>
             </div>
@@ -346,7 +268,6 @@
             <div class="col-md-3 col-sm-6  ">
                 <section  class="widget animated fadeInLeft">
                     <h3 class="title">Subscribe!</h3>
-                    <div class="textwidget">Subscribe to my blog for updates</div>
                     <div>
 
                         <form name="subs-form" id="subs_form" class="subs-form" method="post" action="subscription-handler.php">

@@ -51,6 +51,15 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=441277486073253";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
@@ -64,7 +73,7 @@
             <!--opening hours-->
             <div class="col-md-7 text-right">
                 <p>
-                    Opening Hours : <span>Monday to Saturday - 8am to 9pm</span>
+                    Opening Hours : <span>Monday to Saturday - 8am to 5pm</span>
                     <br class="visible-xs">Contact : <span>+1-610-966-2676 </span>
                 </p>
             </div>
@@ -91,71 +100,58 @@
                     <a href="{{ URL('/') }}">HOME</a>
                 </li>
                 <li>
-                    <a href="#">OUR SERVICES</a>
+                    <a href="{{ URL('services') }}">OUR SERVICES</a>
                     <ul>
                         @foreach($services as $service)
-                        <li><a href="{{ $service->id }}">{{ $service->name }}</a></li>
-                        @endforeach
-                        <!--
-                        <li><a href="#">Alzheimer's & Dementia Care</a></li>
-                        <li><a href="#">Professional Therapy</a> </li>
-                        <li><a href="#">Home Care Aides</a> </li>
-                        <li><a href="#">Parkinson's Care</a> </li>
-                        <li><a href="#">Personal Care</a> </li>
-                        -->
+                        <li><a href="{{ URL('page',str_slug($service->name,'.')) }}">{{ $service->name }}</a></li>
+                        @endforeach 
                     </ul>
                 </li>
                 <li>
                     <a href="#">CAREGIVERS</a>
                     <ul>
                         @foreach($caregivers as $caregiver)
-                            <li><a href="{{ $caregiver->id }}">{{ $caregiver->name }}</a></li>
+                            <li><a href="{{ URL('page',str_slug($caregiver->name,'.')) }}">{{ $caregiver->name }}</a></li>
                         @endforeach
-                        <!--
-                        <li><a href="#">Becoming a Caregiver</a></li>
-                        <li><a href="#">Credentialing & Training</a></li>
-                        <li><a href="#">Caregiver Application</a></li>
-                        -->
                     </ul>
                 </li>
                 <li>
                     <a href="#">NEWS/VIDEOS</a>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Videos</a></li>
+                        @foreach($news as $new)
+                            <li><a href="{{ URL('page',str_slug($new->name,'.')) }}">{{ $new->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li>
                     <a href="#">RESOURCES</a>
                     <ul>
-                        <li> <a href="#">Articles</a></li>
-                        <li> <a href="#">Caregiver Burnout</a> </li>
-                        <li> <a href="#">Home Care Funding Options</a></li>
-                        <li> <a href="#">Accepted Insurance</a></li>
-                        <li> <a href="#">Second Wind Dreams</a></li>
-                        <li> <a href="#">Types of Long-Term Care</a></li>
-                        <li> <a href="#">Understanding Dementia Care</a></li>
+                        @foreach($resources as $resource)
+                            <li><a href="{{ URL('page',str_slug($resource->name,'.')) }}">{{ $resource->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="{{ URL('contact')}}">CONTACT</a></li>
             </ul>
         </nav>
         <div id="responsive-menu-container"></div>
     </div>
 </header>
 
+<div class="banner clearfix">
+    @foreach($img_header as $img)
+        <img src="{{ asset($img->header_img) }}" alt="{{ $img->name }}" />
+    @endforeach
+</div>
 
-
-<div class="banner clearfix"></div>
 <div class="page-top clearfix">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-7 ">
-                <h1 class="entry-title">{{ $title }}</h1>
+                <h1 class="entry-title" style="margin-left:0px; padding-left: 0px;">{{ $title }}</h1>
                 <nav class="bread-crumb">
                     <ul class="breadcrumb clearfix">
-                        <li><a href="{{ URL('/') }}">Everyday Home Care</a><span class="divider"></span></li>
+                        <li><a href="{{ URL::previous() }}">Go back</a><span class="divider"></span></li>
                     </ul>
                 </nav>
             </div>
@@ -187,8 +183,21 @@
                 <section  class="widget animated fadeInLeft">
                     <h3 class="title">About EveryDay Home Care</h3>
                     <div class="textwidget">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<a href="{{ URL('/about') }}"> Read more</a></p>
+                    <?php $i = 0; ?>
+                        @foreach($abouts as $about)
+                          <p> 
+                          {{ str_limit($about->contents, 300) }}
+                            <a href="{{ URL('/page/about.us') }}"> Read more</a>
+                            <?php 
+                                $i++;
+                                if ($i == 1) {
+                                    break;
+                                }
+
+                            ?>
+                          </p>
+
+                        @endforeach
                     </div>
                 </section>
             </div>
@@ -197,21 +206,9 @@
                 <section class="widget animated fadeInLeft ae-animation-fadeInLeft">
                     <h3 class="title">General Services</h3>
                     <ul>
-                        <li>
-                            <a href="#">Home Care Aides</a>
-                        </li>
-                        <li>
-                            <a href="#">Pediatric Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Companion Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Personal Care</a>
-                        </li>
-                        <li>
-                            <a href="#">Conditions Treated</a>
-                        </li>
+                        @foreach($generals as $general)
+                            <li><a href="{{ URL('page',str_slug($general->name,'.')) }}">{{ $general->name }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
             </div>
@@ -223,21 +220,9 @@
                 <section  class="widget animated fadeInLeft">
                     <h3 class="title">Quick links</h3>
                     <ul>
-                        <li>
-                            <a href="#">About us</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact us</a>
-                        </li>
-                        <li>
-                            <a href="#">Testimonies</a>
-                        </li>
-                        <li>
-                            <a href="#">Careers</a>
-                        </li>
-                        <li>
-                            <a href="#">Policy</a>
-                        </li>
+                        @foreach($quicks as $quick)
+                            <li><a href="{{ URL('page',str_slug($quick->name,'.')) }}">{{ $quick->name }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
             </div>
@@ -245,7 +230,6 @@
             <div class="col-md-3 col-sm-6  ">
                 <section  class="widget animated fadeInLeft">
                     <h3 class="title">Subscribe!</h3>
-                    <div class="textwidget">Subscribe to my blog for updates</div>
                     <div>
 
                         <form name="subs-form" id="subs_form" class="subs-form" method="post" action="subscription-handler.php">

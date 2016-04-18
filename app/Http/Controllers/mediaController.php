@@ -54,12 +54,13 @@ class mediaController extends Controller {
 			$mediaName = $request->file('media')->getClientOriginalName();
 			$res = $request->file('media')->move(base_path().'/public/images/contents/',$mediaName);
 			
+			$goingMediaName = 'images/contents/'.$mediaName;
+			
 			if($res)
 			{
-				
 				$userid = Auth::user()->id;
 				
-				MediaModel::create(['media'=>$mediaName, 'media_describe'=> $media_desc, 'media_type'=> $media_type, 'user_id'=>$userid, 'content_id'=>$contentid]);
+				MediaModel::create(['media'=>$goingMediaName , 'media_describe'=> $media_desc, 'media_type'=> $media_type, 'user_id'=>$userid, 'content_id'=>$contentid]);
 
 				return back()->with(['message'=>'File was uploaded successfully']);
 

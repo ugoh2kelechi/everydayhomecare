@@ -19,9 +19,9 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}" id="loginbg">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+						<br/>
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
@@ -40,7 +40,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox" name="remember"> Remember Me
+										<input type="checkbox" name="remember" id="loginck"> Remember Me 
 									</label>
 								</div>
 							</div>

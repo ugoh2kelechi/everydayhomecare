@@ -320,10 +320,10 @@ blockquote p {
 /*------------------------------------------------------*/
 .banner {
   width: 100%;
-  min-height: 180px;
+  /*  min-height: 180px; */
   background-repeat: no-repeat;
   background-position: center top;
-  background-image: url('../images/banner.jpg');
+  /* background-image: url('../images/banner.jpg'); */
   background-size: cover;
 }
 .page-top {
@@ -3690,3 +3690,69 @@ table tbody tr {
 {
   margin-bottom: 10px;
 }
+
+#loginbg{
+  background: #53c3dd;
+  padding-bottom: 1px;
+}
+
+#loginck{
+  border: solid 2px #ccc;
+  padding: 5px;
+  background: #fff;
+}
+
+#pretty
+{
+
+  width: 98%;                          /* specify width  */
+ 
+
+  /*color: #999ca5; */
+  color: #222;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+ 
+  
+  font-size: 15px;
+  line-height: 24px;;
+
+  margin-top: 3px;
+  padding-top: 3px;
+  text-align: left;
+
+  white-space: pre-line;
+  white-space: pre-wrap;                 /* CSS3 browsers  */
+  white-space: -moz-pre-wrap !important; /* 1999+ Mozilla  */
+  white-space: -pre-wrap;                /* Opera 4 thru 6 */
+  white-space: -o-pre-wrap;              /* Opera 7 and up */
+  word-wrap: normal;   
+
+ 
+  background: #F0F5F7;
+
+
+}
+
+#imgpage
+{
+  border-top: 1px solid #dcdee4;
+  margin-top: 10px;
+  margin-top: 5px;
+  height: 300px;
+}
+
+#homeword{
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+#common-blog-post
+{
+  background: #fff;
+}
+
+#tabbb td
+{
+  padding: 10px;
+}
+
